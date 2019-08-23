@@ -1,33 +1,16 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"time"
 )
 
-func bonus2() {
-	file, err := os.Open("./enable1.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
+func bonus2(words []string) {
 	start := time.Now()
 
 	found := false
 
-	for scanner.Scan() {
-		word := scanner.Text()
-
+	for _, word := range words {
 		if len(word) >= 4 {
 			code := getMorse(word)
 
